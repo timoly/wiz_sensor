@@ -1,5 +1,4 @@
 """Support for WiZ sensors."""
-import logging
 
 from __future__ import annotations
 
@@ -18,7 +17,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from .const import DOMAIN
 from .entity import WizEntity
 from .models import WizData
-
+import logging
 _LOGGER = logging.getLogger(__name__)
 
 
