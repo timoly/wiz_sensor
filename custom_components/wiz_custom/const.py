@@ -7,8 +7,8 @@ from pywizlight.exceptions import (
     WizLightTimeOutError,
 )
 
-DOMAIN = "wiz"
-DEFAULT_NAME = "WiZ"
+DOMAIN = "wiz-custom"
+DEFAULT_NAME = "WiZ-custom"
 
 DISCOVER_SCAN_TIMEOUT = 10
 DISCOVERY_INTERVAL = timedelta(minutes=15)

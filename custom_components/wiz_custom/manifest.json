@@ -1,6 +1,6 @@
 {
-  "domain": "wiz-sensor",
-  "name": "WiZ-sensor",
+  "domain": "wiz-custom",
+  "name": "WiZ-custom",
   "config_flow": true,
   "dhcp": [
     { "registered_devices": true },
