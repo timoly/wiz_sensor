@@ -14,10 +14,7 @@ from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from homeassistant.const import (
-    CONF_DEVICE,
-    ENERGY_KILO_WATT_HOUR,
     POWER_WATT,
-    VOLUME_CUBIC_METERS,
 )
 
 from .const import DOMAIN
