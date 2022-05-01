@@ -1,4 +1,6 @@
 """Support for WiZ sensors."""
+import logging
+
 from __future__ import annotations
 
 from homeassistant.components.sensor import (
@@ -8,18 +10,17 @@ from homeassistant.components.sensor import (
     SensorStateClass,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import SIGNAL_STRENGTH_DECIBELS_MILLIWATT
+from homeassistant.const import (SIGNAL_STRENGTH_DECIBELS_MILLIWATT, POWER_WATT,)
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from homeassistant.const import (
-    POWER_WATT,
-)
-
 from .const import DOMAIN
 from .entity import WizEntity
 from .models import WizData
+
+_LOGGER = logging.getLogger(__name__)
+
 
 SENSORS: tuple[SensorEntityDescription, ...] = (
     SensorEntityDescription(
@@ -52,11 +53,13 @@ async def async_setup_entry(
 ) -> None:
     """Set up the wiz sensor."""
     wiz_data: WizData = hass.data[DOMAIN][entry.entry_id]
-    async_add_entities(
-        WizSensor(wiz_data, entry.title, description) for description in SENSORS
-    )
+
+    _LOGGER.info("adding wiz entities")
     async_add_entities(
         WizPowerSensor(wiz_data, entry.title, description) for description in POWER_SENSORS
+    )
+    async_add_entities(
+        WizSensor(wiz_data, entry.title, description) for description in SENSORS
     )
 
 
@@ -91,6 +94,7 @@ class WizPowerSensor(WizEntity, SensorEntity):
         self, wiz_data: WizData, name: str, description: SensorEntityDescription
     ) -> None:
         """Initialize an WiZ sensor."""
+        _LOGGER.info("__init__ wiz: {0}".format(name))
         super().__init__(wiz_data, name)
         self.entity_description = description
         self._attr_unique_id = f"{self._device.mac}_{description.key}"
