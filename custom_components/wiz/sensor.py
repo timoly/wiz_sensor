@@ -103,4 +103,4 @@ class WizPowerSensor(WizEntity, SensorEntity):
     @callback
     def _async_update_attrs(self) -> None:
         """Handle updating _attr values."""
-        self._attr_native_value = self._device.state.get_power()
+        self._attr_native_value = self._device.get_power()
