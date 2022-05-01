@@ -55,9 +55,9 @@ async def async_setup_entry(
 ) -> None:
     """Set up the wiz sensor."""
     wiz_data: WizData = hass.data[DOMAIN][entry.entry_id]
-    # async_add_entities(
-    #     WizSensor(wiz_data, entry.title, description) for description in SENSORS
-    # )
+    async_add_entities(
+        WizSensor(wiz_data, entry.title, description) for description in SENSORS
+    )
     async_add_entities(
         WizPowerSensor(wiz_data, entry.title, description) for description in POWER_SENSORS
     )
