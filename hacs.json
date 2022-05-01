@@ -1,0 +1,5 @@
+{
+    "name": "custom Wiz Light Bulb Integration",
+    "domains": ["light", "sensor"],
+    "iot_class": ["Local Push", "Local Polling"]
+  }
