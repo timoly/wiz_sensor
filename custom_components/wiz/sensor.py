@@ -101,8 +101,8 @@ class WizPowerSensor(WizEntity, SensorEntity):
         self._async_update_attrs()
 
     @callback
-    async def _async_update_attrs(self) -> None:
+    def _async_update_attrs(self) -> None:
         """Handle updating _attr values."""
-        _LOGGER.info("wiz: {0}".format(self._device))
-        power = await self._device.get_power()
-        self._attr_native_value = power
+        self._attr_native_value = self._device.state.pilotResult.get(
+            self.entity_description.key
+        )
