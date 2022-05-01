@@ -1,0 +1,1 @@
+custom temporary custom component for wiz, forked from https://github.com/home-assistant/core/tree/master/homeassistant/components/wiz
