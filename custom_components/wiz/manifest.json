@@ -1,7 +1,7 @@
 {
   "domain": "wiz",
   "name": "WiZ",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "config_flow": true,
   "dhcp": [
     { "registered_devices": true },
